@@ -104,7 +104,7 @@ Action variants are externally-tagged: each `authoredActions[i].action` carries 
 `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/StepIntoVision/ChapterScript.git", from: "0.7.0")
+.package(url: "https://github.com/StepIntoVision/ChapterScript.git", from: "0.4.2")
 ```
 
 Or as a sibling local package:
