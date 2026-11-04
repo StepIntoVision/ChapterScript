@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ChapterScript is the open, platform-pure data format for declarative immersive experiences consumed by [SharedVisions](https://github.com/Shared-Visions/SharedVisionsProject) (visionOS player) and authored by [Maestro](https://github.com/mike-bundy/Maestro) (macOS editor). The package is a Swift Package Manager target containing only `Codable` value types — zero dependencies on RealityKit, UIKit, AppKit, AVFoundation. Builds on macOS, iOS, visionOS, tvOS, watchOS, and Linux.
+ChapterScript is the open, platform-pure data format for declarative immersive experiences consumed by [SharedVisions](https://github.com/Shared-Visions/SharedVisionsProject) (visionOS player) and authored by [Maestro](https://maestrostud.io) (macOS editor). The package is a Swift Package Manager target containing only `Codable` value types — zero dependencies on RealityKit, UIKit, AppKit, AVFoundation. Builds on macOS, iOS, visionOS, tvOS, watchOS, and Linux.
 
 **Tech:** Swift 5.9+, SwiftPM, Codable. No runtime dependencies.
 
@@ -27,7 +27,7 @@ Consumers (SharedVisions, Maestro) pin ChapterScript via `XCRemoteSwiftPackageRe
 4. `git push origin main && git push origin vX.Y.Z`
 5. In each consumer, edit `<project>.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved` to bump the `revision` (the tag's commit SHA) and `version` strings. `xcodebuild -resolvePackageDependencies` won't pick up a new version through `upToNextMajor` unless Package.resolved is bumped or deleted.
 
-`git auth status` should be `mike-bundy` for pushes; the alt `shellcorpnet` account doesn't have write access to this repo. `gh auth switch --user mike-bundy` if needed.
+The repo lives at https://github.com/StepIntoVision/ChapterScript (moved from `mike-bundy` 2026-11-04; old URLs redirect). Pushes need an account with write access to the StepIntoVision org repo: `gh auth status` should show `mike-bundy` (an org admin); the alt `shellcorpnet` account has no access. `gh auth switch --user mike-bundy` if needed.
 
 ## Architecture
 

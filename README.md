@@ -6,7 +6,7 @@ ChapterScript is a Swift package containing only `Codable` value types. It has z
 
 **Vocabulary (format v3):** a *chapter* is the whole `.chapterscript` bundle — one `ChapterDocument`, saved as `chapter.json` beside its `assets/` folder. A chapter contains *sequences* (the timed units of segments, animation tracks, and backdrops); players run one sequence at a time and editors edit one chapter at a time.
 
-The format is the public contract between authoring tools (**Maestro Studio**, the Mac app of the [Maestro](https://maestrostud.io) suite) and players (the open source [ChapterPlayer](https://github.com/mike-bundy/ChapterPlayer) visionOS runtime). Either side can be reimplemented — including in a different language — by following the JSON schema this package defines.
+The format is the public contract between authoring tools (**Maestro Studio**, the Mac app of the [Maestro](https://maestrostud.io) suite) and players (the open source [ChapterPlayer](https://github.com/StepIntoVision/ChapterPlayer) visionOS runtime). Either side can be reimplemented — including in a different language — by following the JSON schema this package defines.
 
 Website: [chapterscript.com](https://chapterscript.com)
 
@@ -104,7 +104,7 @@ Action variants are externally-tagged: each `authoredActions[i].action` carries 
 `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/mike-bundy/ChapterScript.git", from: "0.7.0")
+.package(url: "https://github.com/StepIntoVision/ChapterScript.git", from: "0.7.0")
 ```
 
 Or as a sibling local package:
