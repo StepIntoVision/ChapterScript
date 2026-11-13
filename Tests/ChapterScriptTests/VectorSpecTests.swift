@@ -39,7 +39,7 @@ final class VectorSpecTests: XCTestCase {
         """
         let spec = try JSONDecoder().decode(VectorSpec.self, from: Data(json.utf8))
         XCTAssertNil(spec.capFill,
-                     "an unrecognised cap reads as absent (build resolves .both), never a failed document")
+                     "an unrecognized cap reads as absent (build resolves .both), never a failed document")
         XCTAssertEqual(spec.sourceId, "logo.svg")
     }
 

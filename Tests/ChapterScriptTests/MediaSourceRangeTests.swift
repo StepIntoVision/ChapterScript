@@ -116,7 +116,7 @@ final class MediaSourceRangeTests: XCTestCase {
         XCTAssertEqual(r.sourceTime(forElapsed: 5, masterDuration: 60, looping: true), 31, accuracy: 1e-9)
     }
 
-    func testUnprobedMasterDegradesToPreSourceRangeBehaviour() {
+    func testUnprobedMasterDegradesToPreSourceRangeBehavior() {
         XCTAssertEqual(MediaSourceRange.full.sourceTime(forElapsed: 4, masterDuration: nil), 4)
     }
 

@@ -15,7 +15,7 @@ import Foundation
 ///
 /// `BackdropCue` already carried a stable id for exactly this reason, and said
 /// so in its own doc comment: "positional indices are not usable for this —
-/// retiming a cue past its neighbour reorders the list underneath the
+/// retiming a cue past its neighbor reorders the list underneath the
 /// selection." That reasoning always applied to actions too.
 ///
 /// ORDERING. `at` is the time; the ARRAY's order is the authored tie-break for

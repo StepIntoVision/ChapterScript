@@ -3,8 +3,8 @@
 //  ChapterScriptTests
 //
 //  G7 — the sharpest tolerant-decode requirement in the roadmap: an
-//  unrecognised Effect keeps its id, EVERY parameter (unrecognised keys
-//  and unrecognised value shapes included), its position and its enabled
+//  unrecognized Effect keeps its id, EVERY parameter (unrecognized keys
+//  and unrecognized value shapes included), its position and its enabled
 //  flag, and re-saves byte-identically. An older build must never destroy
 //  a newer build's work.
 //
@@ -40,7 +40,7 @@ final class EffectFormatTests: XCTestCase {
         """
     }
 
-    func testG7UnrecognisedEffectRoundTripsByteIdentically() throws {
+    func testG7UnrecognizedEffectRoundTripsByteIdentically() throws {
         let data = Data(newerBuildJSON.utf8)
         let decoded = try ChapterScriptFormat.makeDecoder()
             .decode([EffectInstance].self, from: data)
@@ -250,7 +250,7 @@ final class VideoTransitionFormatTests: XCTestCase {
         XCTAssertEqual(try encode(back), try encode(video))
     }
 
-    /// An unrecognised kind decodes to NO renderable transition — never
+    /// An unrecognized kind decodes to NO renderable transition — never
     /// a dip and never a dissolve the author did not author — and the
     /// raw value survives a re-save verbatim.
     func testUnknownKindIsNoTransitionAndRoundTrips() throws {

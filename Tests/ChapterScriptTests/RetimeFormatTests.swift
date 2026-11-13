@@ -43,7 +43,7 @@ final class RetimeFormatTests: XCTestCase {
 
     // MARK: - Sampling tolerance
 
-    func testUnrecognisedSamplingIsNearestAndRoundTrips() throws {
+    func testUnrecognizedSamplingIsNearestAndRoundTrips() throws {
         let data = Data(#"{"keys": [], "sampling": "opticalFlow"}"#.utf8)
         let curve = try JSONDecoder().decode(RetimeCurve.self, from: data)
         XCTAssertEqual(curve.sampling, .unknown("opticalFlow"))
@@ -52,7 +52,7 @@ final class RetimeFormatTests: XCTestCase {
         XCTAssertTrue(json.contains("opticalFlow"))
     }
 
-    func testUnrecognisedPitchIsFollowsSpeed() throws {
+    func testUnrecognizedPitchIsFollowsSpeed() throws {
         let pitch = try JSONDecoder().decode(PitchHandling.self,
                                              from: Data(#""formantMagic""#.utf8))
         XCTAssertEqual(pitch, .followsSpeed)

@@ -15,7 +15,7 @@
 //
 //  Exactly one level. No nesting, no parentheses, no mixed AND/OR hierarchy, no
 //  arithmetic on the right-hand side, and no condition that compares one state
-//  to another. Every one of those is a small, reasonable-looking segment, and the
+//  to another. Every one of those is a small, reasonable-looking addition, and the
 //  sum of them is a scripting language inside a film editor. An author writing
 //  a documentary should be able to read a whole condition group out loud.
 //
@@ -144,7 +144,7 @@ extension StoryComparison: Codable {
         case "yesNo":
             self = .yesNo((try? c.decode(Bool.self, forKey: .yesNo)) ?? true)
         case "number":
-            // An unrecognised comparison is NOT silently `.equals`: it becomes
+            // An unrecognized comparison is NOT silently `.equals`: it becomes
             // unsupported, because “at least 2” quietly read as “exactly 2” is a
             // gate that never opens and a branch that never fires.
             guard let comparison = try? c.decode(StoryNumberComparison.self, forKey: .comparison)

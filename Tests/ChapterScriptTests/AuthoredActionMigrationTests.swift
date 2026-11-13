@@ -291,7 +291,7 @@ final class AuthoredActionMigrationTests: XCTestCase {
 
     // MARK: - Identity is not position
 
-    func testInsertingAnActionDoesNotChangeItsNeighboursIds() {
+    func testInsertingAnActionDoesNotChangeItsNeighborsIds() {
         var segment = SegmentDefinitionDTO(id: "s", name: "S", duration: 10, authoredActions: [
             AuthoredAction(id: "act_a", at: 0, action: .showEntity(name: "A")),
             AuthoredAction(id: "act_b", at: 5, action: .showEntity(name: "B"))

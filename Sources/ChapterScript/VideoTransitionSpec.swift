@@ -6,7 +6,7 @@
 //  INCOMING occurrence beside its source range — it describes an edit
 //  point, so it lives with the occurrence whose arrival does the fading.
 //
-//  The kind travels as a RAW STRING: an unrecognised kind must not
+//  The kind travels as a RAW STRING: an unrecognized kind must not
 //  decode to any shipped look (that would invent a picture the author
 //  did not author) — it means NO transition, the Inspector reports, and
 //  the raw value re-saves verbatim. The G7 shape.

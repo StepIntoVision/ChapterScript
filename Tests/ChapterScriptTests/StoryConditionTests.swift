@@ -78,7 +78,7 @@ final class StoryConditionTests: XCTestCase {
         XCTAssertEqual(outcome.problem, .kindMismatch(stateId: objectsFound, held: .number))
     }
 
-    /// An unrecognised NUMBER comparison becomes unsupported rather than
+    /// An unrecognized NUMBER comparison becomes unsupported rather than
     /// defaulting to `.equals`: “at least 2” quietly read as “exactly 2” is a
     /// gate that never opens.
     func testAnUnknownNumberComparisonIsUnsupportedNotEquals() throws {

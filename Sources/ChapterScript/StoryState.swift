@@ -58,7 +58,7 @@ import Foundation
 
 /// The three things a Story State can be.
 ///
-/// Tolerant, and tolerant in the careful direction: an unrecognised kind becomes
+/// Tolerant, and tolerant in the careful direction: an unrecognized kind becomes
 /// `.unsupported` and is re-emitted verbatim, rather than being mapped onto one
 /// of the three. The rule `NavigationIntent` learned the hard way — a fallback
 /// that parses is not the same as a fallback that MEANS the right thing. A state
@@ -504,7 +504,7 @@ public enum StoryStateArithmetic {
                 return .failure(.kindMismatch(stateId: definition.id, expected: definition.kind))
             }
             // Saturating rather than trapping. A counter is a narrative device;
-            // an hour-long chapter that somehow segments one four billion times
+            // an hour-long chapter that somehow adds one four billion times
             // should hold at the top, not crash the experience.
             let current = value.numberValue ?? 0
             return .success(.number(current.addingReportingOverflow(by).overflow

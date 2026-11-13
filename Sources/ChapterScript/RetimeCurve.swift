@@ -31,7 +31,7 @@ import Foundation
 /// How output frames between source frames are produced under a retime.
 /// Exactly two real modes — optical flow is a deliberate rejection.
 ///
-/// An unrecognised future mode decodes as `.nearest` — the cheaper and more
+/// An unrecognized future mode decodes as `.nearest` — the cheaper and more
 /// conservative of the two, so an unknown mode never silently costs an
 /// author playback performance — and its raw value round-trips verbatim.
 public enum FrameSampling: Codable, Sendable, Equatable, Hashable {

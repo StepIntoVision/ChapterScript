@@ -240,7 +240,7 @@ public struct EditorMetadata: Codable, Sendable, Equatable {
     /// too, so the two can never disagree about which folders there are.
     public var sceneFolders: [SceneFolder]
 
-    /// Author-created Scene BROWSER folders — the organisational tree over
+    /// Author-created Scene BROWSER folders — the organizational tree over
     /// everything the author has made: Sequences, entities, placeholders and
     /// backdrop-bound objects alike.
     ///
@@ -250,7 +250,7 @@ public struct EditorMetadata: Codable, Sendable, Equatable {
     /// the browser: a Sequence has no `folder` field to write into, and
     /// backdrops are no longer a separate section to scope against.
     ///
-    /// PURELY ORGANISATIONAL. A Scene folder is not a Group Rig and not a
+    /// PURELY ORGANIZATIONAL. A Scene folder is not a Group Rig and not a
     /// Timeline group: it never parents a RealityKit entity, never changes a
     /// transform, never appears in the runtime scene graph, and never affects
     /// playback, gates or animation. Runtime ignores this field entirely.
@@ -528,7 +528,7 @@ public struct EditorMetadata: Codable, Sendable, Equatable {
 }
 
 /// A CLIP edit group: Timeline occurrences that move as one, preserving
-/// relative timing. Members are opening action ids. Purely organisational —
+/// relative timing. Members are opening action ids. Purely organizational —
 /// grouping never changes when anything plays.
 public struct ClipEditGroup: Codable, Sendable, Equatable, Identifiable {
     public var id: String
@@ -620,7 +620,7 @@ public struct SceneFolderNode: Codable, Sendable, Equatable, Identifiable, Hasha
     private enum CodingKeys: String, CodingKey { case id, name, parentId, items }
 }
 
-/// A named folder in the Scene panel. Editor-only, and purely organisational —
+/// A named folder in the Scene panel. Editor-only, and purely organizational —
 /// foldering an object never changes when or whether it appears.
 ///
 /// Scene assets and backdrops are listed separately and can hold folders of the
@@ -658,7 +658,7 @@ public struct TimelineTrackGroup: Codable, Sendable, Equatable, Identifiable {
     public var section: String
     /// Track ids, in the order the author arranged them.
     public var trackIDs: [String]
-    /// Folded state. Persisted because it is an organisational decision about
+    /// Folded state. Persisted because it is an organizational decision about
     /// the project, not transient view state — reopening a chapter with
     /// forty tracks should not reopen forty rows.
     public var isCollapsed: Bool

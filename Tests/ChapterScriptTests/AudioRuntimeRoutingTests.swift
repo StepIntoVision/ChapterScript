@@ -73,7 +73,7 @@ final class AudioRuntimeRoutingTests: XCTestCase {
     /// NEITHER IS EVER ROUTED POSITIONAL. Point-spatializing a sound field or a
     /// mastered immersive mix is the specific wrong answer — worse than a
     /// downmix, because it invents a location the mix never had.
-    func testFieldsAndMixesAreNeverPointSpatialised() {
+    func testFieldsAndMixesAreNeverPointSpatialized() {
         for model in [AudioPlaybackModel.sceneBased, .spatialMix] {
             // Even carrying an emitter, which an author could have left behind
             // when switching models.

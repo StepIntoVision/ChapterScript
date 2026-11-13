@@ -246,7 +246,7 @@ public enum AudioSpatialForm: Codable, Sendable, Equatable {
     /// True when the form describes a sound field or an already-authored
     /// spatial mix — something that already knows where its content is, and
     /// must therefore never be treated as a point source.
-    public var carriesOwnSpatialisation: Bool {
+    public var carriesOwnSpatialization: Bool {
         switch self {
         case .ambisonic, .appleSpatial, .dolbyAtmos: return true
         case .mono, .stereo, .channelBed, .unknownMultichannel, .unknown: return false
@@ -405,7 +405,7 @@ public struct AudioInterpretation: Codable, Sendable, Equatable {
 /// This enum is what the Inspector, the Viewer and the runtime all branch on,
 /// and the reason the third architectural rule holds: the controls an audio
 /// clip offers are a function of its MODEL, and the models a clip may choose
-/// are a function of its FORM. Neither segment ever consults a filename.
+/// are a function of its FORM. Neither mapping ever consults a filename.
 /// HOW AN ENCODED SPATIAL MASTER IS PRESENTED TO THE LISTENER.
 ///
 /// A LISTENING FRAME, NOT A LOCATION. This is the distinction the whole

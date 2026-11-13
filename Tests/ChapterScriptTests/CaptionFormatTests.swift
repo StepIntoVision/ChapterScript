@@ -3,7 +3,7 @@
 //  ChapterScriptTests
 //
 //  FL-08's format guarantees: absent means no captions and writes nothing;
-//  a pre-Caption document re-saves byte-identically; an unrecognised kind
+//  a pre-Caption document re-saves byte-identically; an unrecognized kind
 //  decodes to the WEAKER claim; an unresolved styleId is kept; and the
 //  whole model round-trips.
 //
@@ -72,7 +72,7 @@ final class CaptionFormatTests: XCTestCase {
         XCTAssertEqual(try encode(back), bytes)
     }
 
-    /// An unrecognised kind is the WEAKER claim: calling a translation an
+    /// An unrecognized kind is the WEAKER claim: calling a translation an
     /// accessibility artifact would over-claim, so the fallback is subtitles.
     func testUnknownKindDecodesAsSubtitles() throws {
         let json = #"{"id":"t","language":"en","kind":"karaoke","cues":[]}"#

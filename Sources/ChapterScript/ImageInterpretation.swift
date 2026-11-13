@@ -91,7 +91,7 @@ public struct ImageInterpretation: Codable, Sendable, Equatable {
     /// rather than written as an empty object.
     public var isEmpty: Bool { projection == nil && placement == nil && alpha == nil }
 
-    // Tolerant by hand — see `VideoInterpretation`: an unrecognised future
+    // Tolerant by hand — see `VideoInterpretation`: an unrecognized future
     // `alpha` decodes as absent (Automatic), never as a failed document.
     private enum CodingKeys: String, CodingKey { case projection, placement, alpha }
 

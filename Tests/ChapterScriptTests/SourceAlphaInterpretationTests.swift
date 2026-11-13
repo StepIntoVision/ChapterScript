@@ -64,7 +64,7 @@ final class SourceAlphaInterpretationTests: XCTestCase {
         let future = Data(#"{"alpha":"linearCoverage","layout":"mono"}"#.utf8)
         let decoded = try ChapterScriptFormat.makeDecoder()
             .decode(VideoInterpretation.self, from: future)
-        XCTAssertNil(decoded.alpha, "an unrecognised alpha must read as Automatic")
+        XCTAssertNil(decoded.alpha, "an unrecognized alpha must read as Automatic")
         XCTAssertEqual(decoded.layout, .mono, "the rest of the record still decodes")
 
         let futureImage = Data(#"{"alpha":"somethingNew"}"#.utf8)

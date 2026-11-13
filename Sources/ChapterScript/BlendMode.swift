@@ -7,7 +7,7 @@
 //  and a reorderable blend has no meaning. Eleven modes in three named
 //  families (the families are the mental model), plus Normal and Replace.
 //
-//  An unrecognised mode RENDERS as `.normal` — the weakest visual claim,
+//  An unrecognized mode RENDERS as `.normal` — the weakest visual claim,
 //  so an unknown mode from a newer build renders conservatively — and the
 //  raw value ROUND-TRIPS verbatim (the AssetKind rule): an older build
 //  must never rewrite a newer build's blend.

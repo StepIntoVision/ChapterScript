@@ -63,7 +63,7 @@ final class MaterialOverrideFormatTests: XCTestCase {
         XCTAssertEqual(back.materialOverrides?.first?.slot, 7)
     }
 
-    func testShaderInputsPreserveUnrecognisedValuesVerbatim() throws {
+    func testShaderInputsPreserveUnrecognizedValuesVerbatim() throws {
         let data = Data("""
         {"slot": 0, "shaderInputs": {"glowAmount": 0.5, "mystery": {"deep": [1, 2]}}}
         """.utf8)

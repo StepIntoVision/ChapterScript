@@ -4,8 +4,8 @@
 //
 //  FL-09: the Effect stack's format types. One ordered stack per
 //  occurrence — order IS evaluation order — and the sharpest tolerant-
-//  decode requirement in the roadmap (G7): an unrecognised Effect keeps
-//  its id, EVERY parameter (including unrecognised keys and unrecognised
+//  decode requirement in the roadmap (G7): an unrecognized Effect keeps
+//  its id, EVERY parameter (including unrecognized keys and unrecognized
 //  value shapes), its position in the stack and its enabled flag, and
 //  re-saves byte-identically. An older build must never destroy a newer
 //  build's work.
@@ -154,7 +154,7 @@ public enum EffectValue: Codable, Sendable, Equatable, Hashable {
 // MARK: - The instance
 
 /// One Effect in an occurrence's ordered stack. `effectId` is a stable
-/// STRING, never an enum ordinal, so an unrecognised one is expressible;
+/// STRING, never an enum ordinal, so an unrecognized one is expressible;
 /// the instance id is durable and minted, so a Key container can address
 /// it and reordering does not change identity.
 public struct EffectInstance: Codable, Sendable, Equatable, Hashable, Identifiable {
@@ -163,7 +163,7 @@ public struct EffectInstance: Codable, Sendable, Equatable, Hashable, Identifiab
     /// The author's toggle. Bypass removes the Effect from evaluation
     /// entirely — it costs nothing, not merely looks like nothing.
     public var enabled: Bool
-    /// RAW, by design. Unrecognised keys are preserved verbatim.
+    /// RAW, by design. Unrecognized keys are preserved verbatim.
     public var parameters: [String: EffectValue]
 
     public init(id: String = "fx_" + UUID().uuidString.prefix(8),

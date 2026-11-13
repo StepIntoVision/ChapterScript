@@ -113,7 +113,7 @@ public enum VideoPlacementPreference: Codable, Sendable, Equatable, Hashable {
 
     public init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        // An unrecognised kind reads as a PANEL rather than throwing: a
+        // An unrecognized kind reads as a PANEL rather than throwing: a
         // preference written by a newer tool must not stop a project opening,
         // and a panel is the reading that shows the picture undistorted.
         switch try? c.decode(Kind.self, forKey: .kind) {

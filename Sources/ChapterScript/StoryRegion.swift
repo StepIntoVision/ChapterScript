@@ -50,16 +50,22 @@ import Foundation
 /// What one piece of content does while the story is HELD at a region's
 /// boundary — the Explore Hold.
 ///
-/// Deliberately small, and deliberately explicit: everything not named by a
-/// continuation simply holds. The alternative — inferring "this looks ambient,
-/// it should probably loop" — produces a chapter whose behavior nobody can
-/// read off the document.
+/// Deliberately small, and deliberately explicit. Content not named by a
+/// continuation gets its kind's FIXED default, never an inferred one: video
+/// and animation hold, while audio and the Environment keep playing
+/// (`StoryContinuationCapabilities.defaultBehavior(for:)` in MaestroKit and
+/// `StoryHoldPlan.defaultCommand(on:)` in ChapterPlayer;
+/// `docs/STORY_REGIONS.md` §6). The alternative — inferring "this looks
+/// ambient, it should probably loop" — produces a chapter whose behavior
+/// nobody can read off the document.
 public enum StoryContinuationBehavior: String, Codable, Sendable, Equatable, CaseIterable {
-    /// Freeze where the authored first pass left it. The default for
-    /// everything, because it is the only behavior that is always honest.
+    /// Freeze where the authored first pass left it. The default for video
+    /// and animation, because it is the only behavior that is always honest
+    /// for them (audio and the Environment default to `continue`).
     case hold
     /// Repeat the region's authored span, using runtime dwell time. The
-    /// authored clock does not move; a sampling overlay does.
+    /// authored clock does not move; a sampling overlay does. Animation only:
+    /// the runtime refuses a media loop.
     case loop
     /// Keep running on the content's own clock (a video keeps playing past the
     /// boundary). Offered only where the runtime can honestly do it.
@@ -169,7 +175,7 @@ public struct StoryContinuation: Codable, Sendable, Equatable {
 /// narrative progression may stall until an exit condition resolves.
 public struct StoryRegion: Codable, Sendable, Equatable, Identifiable {
     /// Stable, opaque. Survives save/reopen, reorder, sync, undo and edits to
-    /// neighbouring regions — the same rule every other authored id follows.
+    /// neighboring regions — the same rule every other authored id follows.
     public var id: String
     /// What the author calls it: "Radio Room". `nil` = editors describe it as
     /// an unnamed Explore region rather than inventing one.
@@ -187,7 +193,7 @@ public struct StoryRegion: Codable, Sendable, Equatable, Identifiable {
     /// A `SegmentGateDTO` on purpose, not a new condition type: "narrative
     /// progression may continue" is exactly what a gate already means, and the
     /// runtime already has one detector for tap / viewer-facing / approach /
-    /// grab. Two representations would be two things to keep in segment and two
+    /// grab. Two representations would be two things to keep in sync and two
     /// device-QA surfaces.
     ///
     /// The region OWNS this, and the compiler is the only writer of the gate on
@@ -205,7 +211,8 @@ public struct StoryRegion: Codable, Sendable, Equatable, Identifiable {
     public var fallbackTimeout: Double?
 
     /// Explicit per-content behavior during the hold. Anything not named here
-    /// holds.
+    /// gets its kind's default: video and animation hold, audio and the
+    /// Environment keep playing (see `StoryContinuationBehavior`).
     public var continuations: [StoryContinuation]
 
     public var endTime: Double { startTime + previewDuration }
@@ -311,7 +318,7 @@ public struct StoryRegion: Codable, Sendable, Equatable, Identifiable {
 public enum StoryRegionTimeline {
 
     /// Regions in authored time order. The stored array's order is never
-    /// trusted: a resize can move a region past its neighbour.
+    /// trusted: a resize can move a region past its neighbor.
     public static func sorted(_ regions: [StoryRegion]) -> [StoryRegion] {
         regions.sorted { $0.startTime < $1.startTime }
     }

@@ -85,7 +85,7 @@ public struct SubElementKeyTrack: Codable, Sendable, Equatable {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         self.entityId = try c.decode(String.self, forKey: .entityId)
         self.primPath = try c.decode(String.self, forKey: .primPath)
-        // An unrecognised order reads as `.xyz` rather than throwing: a
+        // An unrecognized order reads as `.xyz` rather than throwing: a
         // track written by a newer tool must not stop a project opening.
         self.rotationOrder = try c.decodeIfPresent(
             AnimationRotationOrder.self, forKey: .rotationOrder) ?? .xyz

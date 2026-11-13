@@ -8,9 +8,9 @@
 //  and organized; it NEVER appears in an authored fact, so deleting a
 //  preset breaks nothing that was made from it.
 //
-//  Tolerance is G7's, one level up: an unrecognised `kind` keeps its
+//  Tolerance is G7's, one level up: an unrecognized `kind` keeps its
 //  entry (shown as "made with a newer version", not applicable), and an
-//  unrecognised payload round-trips verbatim through `.raw`.
+//  unrecognized payload round-trips verbatim through `.raw`.
 //
 
 import Foundation
@@ -203,7 +203,7 @@ public enum PresetPayload: Codable, Sendable, Equatable {
 public struct SequenceTemplatePayload: Codable, Sendable, Equatable {
     /// The whole authored Sequence, in the format's own type. Deliberately
     /// not a parallel "template shape": a second description of a Sequence
-    /// is a second thing to keep in segment with the first.
+    /// is a second thing to keep in sync with the first.
     public var sequence: SequenceDefinitionDTO
     /// Per-track editor layout the template also restores (heights, colors,
     /// lock/mute), keyed by track-surface id as `EditorMetadata` keys it.
@@ -257,7 +257,7 @@ public struct CurvePresetPayload: Codable, Sendable, Equatable {
 /// USER presets live in Application Support in the SAME shape — the
 /// existing store discipline.
 public struct PresetEntry: Codable, Sendable, Equatable, Identifiable {
-    /// Durable, minted. Used to FIND, FAVORITE and ORGANISE the preset —
+    /// Durable, minted. Used to FIND, FAVORITE and ORGANIZE the preset —
     /// and it NEVER appears in an authored fact. Applying copies values;
     /// the result carries its own identity and no back-reference.
     public var id: String

@@ -30,7 +30,7 @@ final class EntityDisplayNameTests: XCTestCase {
         XCTAssertEqual(entity.id, "IMG_0071.MOV")
         XCTAssertNil(entity.displayName)
         XCTAssertEqual(entity.resolvedDisplayName, "IMG_0071.MOV",
-                       "an unlabelled entity reads as its id, which is what it always did")
+                       "an unlabeled entity reads as its id, which is what it always did")
     }
 
     func testDisplayNameRoundTrips() throws {

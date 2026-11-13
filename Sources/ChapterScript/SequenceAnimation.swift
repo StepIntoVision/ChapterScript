@@ -471,7 +471,7 @@ public enum SequenceAnimationEvaluator {
     ///
     /// Merely adding a keyframe must not alter motion. That sounds obvious and
     /// is not what happens naively: `setKey` followed by `refreshAutoTangents`
-    /// re-derives the auto tangents of the new key AND both neighbours, which
+    /// re-derives the auto tangents of the new key AND both neighbors, which
     /// visibly reshapes the segment. Measured on a two-key 0→4 ramp, inserting  // LEGACY-VOCAB: Bezier segment
     /// the sampled midpoint moved the curve by up to 0.147 — nearly 4% of its
     /// range, from an edit the author intended as a no-op.
@@ -484,7 +484,7 @@ public enum SequenceAnimationEvaluator {
     ///
     /// THE THREE AFFECTED KEYS BECOME HAND-SHAPED (`autoTangents = false`).
     /// That is not incidental: an auto tangent is by definition re-derived from
-    /// its neighbours, so leaving them auto would let the next refresh undo the
+    /// its neighbors, so leaving them auto would let the next refresh undo the
     /// split. Every DCC makes the same trade — inserting a key on an
     /// auto-smoothed curve pins the tangents that preserve it.
     ///

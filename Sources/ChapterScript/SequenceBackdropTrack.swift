@@ -36,7 +36,7 @@ public struct BackdropCue: Codable, Sendable, Equatable, Identifiable {
 
     /// Stable identity so an editor can select and drag a cue across a
     /// re-sort. Positional indices are not usable for this — retiming a cue
-    /// past its neighbour reorders the list underneath the selection.
+    /// past its neighbor reorders the list underneath the selection.
     public var id: String
 
     /// Absolute seconds from sequence start. Clamped at zero on decode: a
@@ -313,7 +313,7 @@ public enum SequenceBackdropTimeline {
         let cues = effectiveCues(track: track, legacy: legacy)
         return cues.enumerated().map { index, cue in
             let next = index + 1 < cues.count ? cues[index + 1].startTime : sequenceDuration
-            // A cue retimed past its neighbour would otherwise draw a negative
+            // A cue retimed past its neighbor would otherwise draw a negative
             // width; clamping keeps the lane renderable mid-drag.
             return (cue, max(next, cue.startTime))
         }

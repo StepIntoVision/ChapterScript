@@ -19,7 +19,7 @@ import Foundation
 
 public struct Marker: Codable, Sendable, Equatable, Hashable, Identifiable {
     /// DURABLE — minted at creation and preserved through every mutation
-    /// path: rename, recategorise, move, resize, trim, slip, blade, undo.
+    /// path: rename, recategorize, move, resize, trim, slip, blade, undo.
     /// Only an explicit duplicate mints a fresh one.
     public var id: String
     /// SOURCE seconds on a Clip Marker; SEQUENCE seconds on a Sequence

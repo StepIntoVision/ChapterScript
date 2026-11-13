@@ -48,11 +48,11 @@ public indirect enum NavigationIntent: Codable, Sendable, Equatable, Hashable {
     case restart
     /// Finish. Not a Sequence, and not the same as holding on the last segment.
     case end
-    /// A navigation this build does not understand, kept verbatim.
+    /// A navigation this build does not understand, kept by name.
     ///
     /// ── WHY THIS EXISTS ─────────────────────────────────────────────────────
     ///
-    /// The first version of this decoder mapped an unrecognised intent to
+    /// The first version of this decoder mapped an unrecognized intent to
     /// `.end`. That was wrong in the most dangerous way available: a newer
     /// tool's "go to the epilogue" would have SILENTLY ENDED THE CHAPTER on an
     /// older build, and nothing would have said so. Forward compatibility must
@@ -60,9 +60,11 @@ public indirect enum NavigationIntent: Codable, Sendable, Equatable, Hashable {
     ///
     /// So an unknown intent becomes this: it names no destination, terminates
     /// nothing, and fails INERTLY at runtime while the validator reports it.
-    /// `raw` is retained so an editor can re-emit the document unchanged rather
-    /// than quietly downgrading somebody's chapter — the same rule
-    /// `SegmentActionDTO.unknown` already follows.
+    /// The `kind` name is retained, so re-saving never turns it into a real
+    /// navigation. `raw` is ONLY the value under a key literally named `raw`,
+    /// not the whole object: unlike `SegmentActionDTO.unknown`, which reads
+    /// the whole object and re-flattens it, any other field a newer build
+    /// wrote is dropped on re-save (SBR-13, open).
     case unsupported(kind: String, raw: AnyCodableValue?)
 
     /// **Go wherever the story's memory says.**
@@ -202,8 +204,12 @@ public indirect enum NavigationIntent: Codable, Sendable, Equatable, Hashable {
         case .restart: try c.encode(Kind.restart, forKey: .kind)
         case .end:     try c.encode(Kind.end, forKey: .kind)
         case .unsupported(let kind, let raw):
-            // RE-EMITTED VERBATIM. Saving a chapter in an older build must not
-            // silently downgrade a navigation the author wrote in a newer one.
+            // RE-EMITTED, BUT NOT VERBATIM. Saving a chapter in an older build
+            // must not downgrade a navigation the author wrote in a newer one
+            // into a real one: the `kind` name goes back out unchanged, and so
+            // does a payload under the key `raw`, if there was one. Any other
+            // field the newer build wrote (a `sequenceId`, `cases`, …) is not
+            // kept by `init(from:)` and is lost on re-save (SBR-13, open).
             try c.encode(kind, forKey: .kind)
             if let raw { try c.encode(raw, forKey: .raw) }
         case .goTo(let id):
@@ -226,7 +232,7 @@ public indirect enum NavigationIntent: Codable, Sendable, Equatable, Hashable {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         // TOLERANT, like `GateType` and `EntityKind`: a newer tool's intent must
         // not fail the whole document. But it must not be GUESSED at either —
-        // an unrecognised intent becomes `.unsupported`, which does nothing and
+        // an unrecognized intent becomes `.unsupported`, which does nothing and
         // is reported. It is never mapped onto a real navigation.
         let name = (try? c.decode(String.self, forKey: .kind)) ?? ""
         guard let kind = Kind(rawValue: name) else {

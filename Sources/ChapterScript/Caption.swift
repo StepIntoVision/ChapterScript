@@ -22,8 +22,8 @@ import Foundation
 /// are a translation. A player advertises them differently, so conflating
 /// them is a loss of meaning.
 ///
-/// An unrecognised kind decodes as `.subtitles` — the WEAKER claim.
-/// Mislabelling a translation as an accessibility artifact would over-claim.
+/// An unrecognized kind decodes as `.subtitles` — the WEAKER claim.
+/// Mislabeling a translation as an accessibility artifact would over-claim.
 public enum CaptionKind: String, Codable, Sendable, Hashable, CaseIterable {
     case captions
     case subtitles
@@ -133,7 +133,7 @@ public struct CaptionTrack: Codable, Sendable, Equatable, Hashable, Identifiable
         let c = try decoder.container(keyedBy: CodingKeys.self)
         id = try c.decode(String.self, forKey: .id)
         language = try c.decode(String.self, forKey: .language)
-        // Absent or unrecognised ⇒ the weaker claim.
+        // Absent or unrecognized ⇒ the weaker claim.
         kind = (try? c.decodeIfPresent(CaptionKind.self, forKey: .kind)).flatMap { $0 } ?? .subtitles
         label = try c.decodeIfPresent(String.self, forKey: .label)
         styleId = try c.decodeIfPresent(String.self, forKey: .styleId)

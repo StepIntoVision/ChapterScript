@@ -463,7 +463,7 @@ public struct VectorSpec: Codable, Sendable, Equatable {
     public var sourceId: String
     /// nil ⇒ 0 ⇒ FLAT (both caps) — the same toggle-not-mode as a Title.
     public var extrusionDepth: Float?
-    /// SHARED with TextSpec. Unrecognised ⇒ `.both`, the most complete shape.
+    /// SHARED with TextSpec. Unrecognized ⇒ `.both`, the most complete shape.
     public var capFill: TextCapFill?
     public var bevelRadius: Float?
     /// A preset-library reference, shared with a Title. Unresolved ⇒ no
@@ -519,7 +519,7 @@ public struct VectorSpec: Codable, Sendable, Equatable {
 /// regenerated on change, never itself authoritative.
 ///
 /// Every field beyond the original four is optional and TOLERANTLY decoded
-/// (an unrecognised enum case reads as absent), and ABSENT means the
+/// (an unrecognized enum case reads as absent), and ABSENT means the
 /// constant the Mac hardcoded before this campaign — so a Chapter written
 /// earlier renders exactly as it did and re-saves byte-identically.
 ///

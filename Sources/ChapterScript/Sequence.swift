@@ -455,7 +455,7 @@ public enum ImmersiveBackdropSpec: Codable, Sendable, Equatable {
 
     public init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
-        // An unrecognised kind resolves to a placeholder rather than throwing:
+        // An unrecognized kind resolves to a placeholder rather than throwing:
         // a backdrop written by a newer tool reads as "something goes here,
         // but this build doesn't know what", which is exactly true and is far
         // better than refusing to open the chapter.

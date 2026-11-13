@@ -254,7 +254,7 @@ final class SequenceMigrationTests: XCTestCase {
         XCTAssertEqual(gate.prompt, "Move closer")
     }
 
-    // MARK: - Raw v2 data, not synthesised
+    // MARK: - Raw v2 data, not synthesized
 
     /// `AudioScope` was a String raw-value enum, so v2 baked the old vocabulary into
     /// the DATA as `"scope": "segment"`. Both routes must handle it: the migrator

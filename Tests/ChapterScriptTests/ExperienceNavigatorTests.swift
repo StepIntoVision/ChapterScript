@@ -302,7 +302,7 @@ final class ExperienceNavigatorTests: XCTestCase {
 
 extension ExperienceNavigatorTests {
 
-    /// THE DEFECT THIS FIXES. The first decoder mapped an unrecognised intent
+    /// THE DEFECT THIS FIXES. The first decoder mapped an unrecognized intent
     /// to `.end`, so a newer tool's navigation would have SILENTLY ENDED THE
     /// CHAPTER on an older build. Forward compatibility must never invent
     /// narrative meaning.

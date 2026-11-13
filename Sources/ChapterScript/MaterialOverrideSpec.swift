@@ -35,7 +35,7 @@ public struct MaterialOverrideSpec: Codable, Sendable, Equatable {
     public var opacity: Float?
     public var emissiveColor: ColorRGBA?
     public var emissiveIntensity: Float?
-    /// The blend mode. An unrecognised value decodes as nil (the weakest
+    /// The blend mode. An unrecognized value decodes as nil (the weakest
     /// visual claim — the file's own) and its raw string round-trips
     /// verbatim through `unknownBlending`.
     public var blending: MaterialBlending?
@@ -45,10 +45,10 @@ public struct MaterialOverrideSpec: Codable, Sendable, Equatable {
     public var baseColorTextureSourceId: String?
     public var normalTextureSourceId: String?
     /// A ShaderGraphMaterial's exposed named inputs. Preserved verbatim
-    /// when unrecognised (G7's discipline one level down).
+    /// when unrecognized (G7's discipline one level down).
     public var shaderInputs: [String: EffectValue]?
 
-    /// The verbatim raw value of an unrecognised `blending` — kept so a
+    /// The verbatim raw value of an unrecognized `blending` — kept so a
     /// document written by a newer build re-saves byte-identically.
     public var unknownBlending: String?
 

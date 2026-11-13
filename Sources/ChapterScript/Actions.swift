@@ -448,15 +448,15 @@ public struct VideoActionDTO: Codable, Sendable, Equatable {
     public var markers: [Marker]?
     /// THE EFFECT STACK (FL-09): ordered, owned by THIS occurrence — order
     /// IS evaluation order. Additive and tolerant; absent means none, and
-    /// an unrecognised Effect round-trips losslessly (G7).
+    /// an unrecognized Effect round-trips losslessly (G7).
     public var effects: [EffectInstance]?
     /// THE DISPLAY BLEND (FL-11): stage 5, a property of the occurrence.
-    /// Absent ⇒ `.normal`; an unrecognised mode renders as `.normal` and
+    /// Absent ⇒ `.normal`; an unrecognized mode renders as `.normal` and
     /// its raw value round-trips verbatim.
     public var blendMode: BlendMode?
     /// A TWO-SOURCE TRANSITION (FL-12), stored on the INCOMING
     /// occurrence — the one whose arrival does the fading. Absent ⇒ no
-    /// transition; an unrecognised kind means NO transition (never a look
+    /// transition; an unrecognized kind means NO transition (never a look
     /// the author did not author) and the raw value round-trips.
     public var videoTransition: VideoTransitionSpec?
     /// THE RETIME CURVE (FL-13): the occurrence's own Sequence-time to
@@ -571,7 +571,7 @@ public struct VideoActionDTO: Codable, Sendable, Equatable {
     }
 }
 
-/// How the virtual camera samples the sphere (FL-23). An unrecognised
+/// How the virtual camera samples the sphere (FL-23). An unrecognized
 /// future mode decodes as `.bilinear` — the CHEAPER of the two, so an
 /// unknown mode never silently costs an author playback performance.
 public enum ProjectionSampling: String, Codable, Sendable, Equatable, CaseIterable {

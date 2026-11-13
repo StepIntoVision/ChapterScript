@@ -142,7 +142,7 @@ final class PresetTests: XCTestCase {
         XCTAssertFalse(entry.kind.isKnown)
         let back = try roundTrip(doc(presets: [entry]))
         XCTAssertEqual(back.presets, [entry],
-                       "an unrecognised kind keeps its entry and round-trips")
+                       "an unrecognized kind keeps its entry and round-trips")
     }
 
     func testUnknownPayloadRoundTripsVerbatim() throws {
@@ -159,7 +159,7 @@ final class PresetTests: XCTestCase {
         let out = String(data: try enc.encode(entry), encoding: .utf8)!
         XCTAssertTrue(out.contains("\"volumetricTitle\""))
         XCTAssertTrue(out.contains("\"extra\":true"),
-                      "unrecognised sibling keys inside the payload survive")
+                      "unrecognized sibling keys inside the payload survive")
     }
 
     func testMissingCategoryPathDecodesEmptyAndEmptyEmitsNoKey() throws {

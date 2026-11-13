@@ -120,7 +120,7 @@ public enum MotionStartPlace: String, Codable, Sendable, Equatable, CaseIterable
 
 /// Which axis an ambient behavior turns about — a SPIN turns about it in
 /// place, an ORBIT draws its circle in the plane perpendicular to it. One
-/// field, because it is one idea: two would have to be kept in segment by hand,
+/// field, because it is one idea: two would have to be kept in sync by hand,
 /// and the picker an author sees is the same picker either way.
 public enum MotionAmbientAxis: String, Codable, Sendable, Equatable, CaseIterable {
     case x, y, z
